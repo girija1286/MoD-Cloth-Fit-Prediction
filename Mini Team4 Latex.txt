@@ -1,0 +1,2107 @@
+\documentclass[12pt, English]{article}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage[svgnames]{xcolor}
+\renewcommand{\baselinestretch}{1.5}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{sectsty}
+\usepackage{fancyhdr}
+\fancyfoot[C]{}
+\renewcommand{\headrulewidth}{4pt}
+\renewcommand{\footrulewidth}{4pt}
+\sectionfont{\fontsize{17.28}{17.28}\selectfont}
+\usepackage{mathptmx}
+\usepackage[font=small,labelfont=bf]{caption}
+\renewcommand{\figurename}{Figure}
+\usepackage[figurename=Figure]{caption}
+\usepackage{ragged2e}
+\usepackage{multirow}
+\addtolength{\topmargin}{-57pt}
+\addtolength{\oddsidemargin}{92pt}
+\addtolength{\footskip}{50pt}
+\justifying
+
+\usepackage{listings}
+\usepackage{afterpage}
+\pagestyle{plain}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+%\lstset{language=R,
+%    basicstyle=\small\ttfamily,
+%   stringstyle=\color{DarkGreen},
+%    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+%    morekeywords={TRUE,FALSE},
+%    deletekeywords={data,frame,length,as,character},
+%    keywordstyle=\color{blue},
+%    commentstyle=\color{DarkGreen},
+%}
+
+\lstset{frame=tb,
+language=R,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+numbers=none,
+keywordstyle=\color{blue},
+numberstyle=\tiny\color{gray},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=3
+}
+
+\usepackage{here}
+
+
+\textheight=21cm
+\textwidth=17cm
+%\topmargin=-1cm
+\oddsidemargin=0cm
+\parindent=0mm
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% La siguiente instrucciÃ³n pone el curso automÃ¡ticamente%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{color}
+\usepackage{ragged2e}
+
+\captionsetup[table]{name=Table}
+\global\let\date\relax
+\newcounter{unomenos}
+\setcounter{unomenos}{\number\year}
+\addtocounter{unomenos}{-1}
+\stepcounter{unomenos}
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+\vspace*{-1in}
+\begin{Large}
+\vspace*{0.1in}
+\textbf{A Mini-Project Report\\on}\\
+\end{Large}
+\vspace*{0.1in}
+\textbf{\Large \textcolor{}{ MODCLOTH FIT PREDICTION USING
+MACHINE LEARNING}}\\
+\begin{large}
+\textbf{{submitted in partial fulfillment of the requirements\\
+for the award of degree of\\ BACHELOR OF TECHNOLOGY}}\\
+\end{large}
+\begin{large}
+{\textbf{ in\\ Information Technology\\by}}\\
+\end{large}
+\textit{\textbf{\large \textcolor{} {U . Shivani (19WH1A1279)}}} \\
+\textit{\textbf{\large \textcolor{} {T . Pooja (19WH1A1284)}}} \\
+\textit{\textbf{\large \textcolor{} {P . Girija(19WH1A1286)}}} \\
+\textit{\textbf{\large \textcolor{} {G . Vaishnavi (19WH1A12B9)}}}\\
+\begin{large}
+\textit{\textbf{Under the esteemed guidance of}}\\
+\end{large}
+\textit{\textbf{\large \textcolor{} {Dr. P. S Latha Kalyampudi}}} \\
+\textit{\textbf{\large \textcolor{} {Associate Professor}}} \\
+\begin{center}
+\includegraphics[width=1.4cm,height=1.4cm]{S2.png}
+\end{center}
+\begin{large}
+\textit{\textbf{\large{Department of Information Technology }}}\\ 
+\end{large}
+\begin{Large}
+\textit{\textbf{\large{BVRIT HYDERABAD College of Engineering for Women }}} \\
+\end{Large}
+\begin{normalsize}
+\textbf{ Rajiv Gandhi Nagar, Nizampet Road, Bachupally, Hyderabad – 500090}\\
+\textit{\textbf{\large \textcolor{}{ (Affiliated to Jawaharlal Nehru Technological University, Hyderabad) }}}\\
+\textbf{(NAAC ‘A’ Grade \& NBA Accredited- ECE, EEE, CSE & IT)}\\
+\end{normalsize}
+\begin{large}
+\vspace{0.05in}
+\textbf{ January, 2023}\\
+\end{large}
+\end{center}
+\end{titlepage}
+%===========================================================================
+
+\newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
+\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+%===========================DECLARATION=====================================
+\begin{titlepage}
+\begin{center}
+    \textbf{\LARGE DECLARATION}\\
+\end{center}
+\vspace*{0.2in}
+
+We hereby declare that the work presented in this project entitled {\textbf{\textcolor{}{“ MODCLOTH FIT PREDICTION USING
+MACHINE LEARNING”}}} submitted towards completion of Minor Project in IV year I sem of B.Tech IT at “BVRIT HYDERABAD College of Engineering for Women”, Hyderabad is an authentic record of our original work carried out under the esteem guidance of {\textbf {\textcolor{}{Dr. P. S Latha Kalyampudi , Associate Professor}}}, Department of Information Technology.
+
+
+\raggedleft
+\vspace*{0.5in}
+
+{\textbf {\textcolor{}{U. Shivani (19WH1A1279)}}}\\
+\raggedleft
+\vspace*{0.3in}
+{\textbf {\textcolor{}{T. Pooja (19WH1A1284)}}}\\
+\raggedleft
+\vspace*{0.3in}
+{\textbf {\textcolor{}{P. Girija (19WH1A1286)}}}\\
+\raggedleft
+\vspace*{0.3in}
+{\textbf {\textcolor{}{G. Vaishnavi (19WH1A12B9)}}}\\
+
+\end{titlepage}
+%===========================================================================
+%===========================CERTIFICATE=====================================
+\begin{titlepage}
+\vspace*{-0.5in}
+\begin{center}
+\includegraphics[width=2.8cm]{S2.png}
+\end{center}
+%===========================================================================
+\begin{center}
+\begin{large}
+\textbf{ \textcolor{}{BVRIT HYDERABAD\\College of Engineering for Women}}\\
+\end{large}
+\begin{footnotesize}
+\textbf{ Rajiv Gandhi Nagar, Nizampet Road, Bachupally, Hyderabad – 500090}\\
+\vspace*{0.1in}
+\textbf{\textcolor{}{(Affiliated to Jawaharlal Nehru Technological University, Hyderabad)}}\\
+\textbf{(NAAC ‘A’ Grade \& NBA Accredited- ECE, EEE, CSE & IT)}\\
+\end{footnotesize}
+\end{center}
+%===========================================================================
+\begin{center}
+    \textbf{\large CERTIFICATE}\\
+\end{center}
+
+\begin{normalsize}
+
+
+This is to certify that the mini-project report on {\textbf{\textcolor{}{“ MODCLOTH FIT PREDICTION USING
+MACHINE LEARNING”}}} is a bonafide work carried out by  {\textbf{U. Shivani (19WH1A1279),
+T. Pooja (19WH1A1284), P. Girija (19WH1A1286) }} and {\textbf{G. Vaishnavi (19WH1A12B9)}} in the fulfillment for the award of B.Tech degree in \textbf{Information Technology, BVRIT HYDERABAD College of Engineering for Women, Bachupally, Hyderabad} affiliated to Jawaharlal Nehru Technological University, Hyderabad under my guidance and supervision.
+\newline
+\tab The results embodied in the project work have not been submitted to any other university or institute for the award of any degree or diploma.
+\end{normalsize}
+
+\vspace*{0.5in}
+
+\noindent
+{\begin{normalsize}
+{\textbf{Internal Guide}}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{ Head of the Department}
+\end{normalsize}
+}\\
+%===========================================================================
+\noindent
+{\begin{normalsize}
+{\textbf{Dr. P. S Latha Kalyampudi }}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{Dr. Aruna Rao S L}
+\end{normalsize}
+}\\
+%===========================================================================
+\noindent
+{\begin{normalsize}
+{\textbf{ Associate Professor}}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{Professor \& HoD}
+\end{normalsize}
+}\\
+%===========================================================================
+\noindent
+{\begin{normalsize}
+{\textbf{Department of IT}}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{Department of IT}
+\end{normalsize}
+}
+\vspace*{0.4in}
+\begin{center}
+{\textbf{\large External Examiner}}
+\end{center}
+
+
+
+\end{titlepage}
+%===========================================================================
+%===========================ACKNOWLEDGEMENT=================================
+\begin{titlepage}
+\begin{center}
+    \textbf{\normalsize \underline{ACKNOWLEDGEMENT}}\\
+\end{center}
+\vspace*{0.2in}
+\begin{normalsize}
+We would like to express our profound gratitude and thanks to \textbf{Dr. K. V. N. Sunitha, Principal, BVRIT HYDERABAD College of Engineering for Women} for providing the working facilities in the college.\\
+\newline
+Our sincere thanks and gratitude to \textbf{Dr. Aruna Rao S L, Professor \& Head, Department of IT, BVRIT HYDERABAD College of Engineering for Women} for all the timely support, constant guidance and valuable suggestions during the period of our project.\\
+\newline
+We are extremely thankful and indebted to our internal guide, \textbf{Dr. P. S. Latha Kalyampudi, Associate Professor, Department of IT, BVRIT HYDERABAD College of Engineering for Women} for her constant guidance, encouragement and moral support throughout the project.\\
+\newline
+Finally, we would also like to thank our Project Coordinators \textbf{Ms. K.S Niraja, Assistant Professor, Mr. Ch. Anil Kumar, Assistant Professor}, all the faculty and staff of Department of IT who helped us directly or indirectly, parents and friends for their cooperation in completing the project work.
+\end{normalsize}
+
+\raggedleft
+\vspace*{0.5in}
+\begin{normalsize}
+{U . Shivani (19WH1A1279)}\\ \\
+\vspace*{0.25in}
+\raggedleft
+{T . Pooja (19WH1A1284)}\\ \\
+\vspace*{0.25in}
+\raggedleft
+{P . Girija (19WH1A1286)}\\\\
+\vspace*{0.25in}
+\raggedleft
+{G . Vaishnavi (19WH1A12B9)}\\ \\
+\raggedleft
+\end{normalsize}
+\end{titlepage}
+%===========================ABSTRACT========================================
+\begin{titlepage}
+
+\begin{center}
+    \textbf{\Large ABSTRACT}\\
+\end{center}
+
+\begin{normalsize}
+MoD Cloth fit Prediction is used to predict the size of a particular Mod Cloth product fit for the customer. Fit prediction is critical in order to improve customers’ shopping experiences and to reduce product return rates. Modelling customers’ fit feedback is challenging due to its subtle semantics, arising from the subjective evaluation of products, and imbalanced label distribution. This project proposes a new predictive framework to tackle the product fit problem, which captures the customers’ feedback on the product fit, and employs a metric learning technique to resolve the issues. It also contribute the public dataset collected from online clothing retailer (MoD Cloth). The whole dataset is split into training and testing sets.
+This dataset is useful in identifying key features that determine the fit of a clothing product on a customer. Random Forest algorithm is applied to predict the Size of the product.
+
+\end{normalsize}\\\\\\\\\\\\\\\\
+\begin{normalsize}
+    \begin{center}
+    \vspace*{\fill}
+    \textbf{V}
+    \end{center}
+\end{normalsize}
+\end{normalsize}
+\end{titlepage}
+%=====================LIST-OF-FIGURES======================================
+\begin{titlepage}
+
+\begin{center}
+\vspace{-100cm}
+    \textbf{\large LIST OF FIGURES}
+\end{center}
+
+\begin{center}
+\begin{normalsize}
+     \begin{tabular}{|c|l|c|}
+     \hline
+     \normalsize\textbf{Figure No.} & \normalsize\textbf{Figure Name} & \normalsize\textbf{Page No.} \\
+     \hline
+     3.2.1 & Architecture Design  for size prediction model & 6\\ \hline
+     3.3.1 & Use case diagram to predict size  & 7\\ \hline
+     4.2.1 & Raw Data of MoDCloth Dataset & 8\\ \hline
+     4.2.2 & Data Preprocessing  of MoDCloth Data & 10\\ \hline
+     4.2.3 & Data Visualization  of MoDCloth Dataset & 10\\ \hline
+     4.2.4 & Splitting the Data into training \& testing data & 11\\ \hline
+     4.2.5 & Accuracy of the Random Forest model & 12\\ \hline
+     4.2.6.1 & Random Forest & 12\\ \hline
+     4.3 & Predicting the Size with user inputs & 14\\ \hline
+     \end{tabular}
+    \begin{normalsize}
+    \begin{center}
+    \vspace*{\fill}
+    \textbf{VI}
+    \end{center}
+\end{normalsize}
+\end{normalsize}
+\end{titlepage}
+
+
+     
+
+
+%==========================================================================
+\newpage
+%=====================CONTENTS=============================================
+\begin{titlepage}
+
+\begin{center}
+    \textbf{\Large CONTENTS}\\
+\end{center}
+\vspace*{0.25in}
+
+%===========================================================================
+\noindent
+{\begin{normalsize}
+\textbf{\tab TOPIC}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{PAGE NO.}
+\end{normalsize}
+}\\
+%===========================================================================
+%==========================================================================
+\noindent
+{\begin{large}
+\textbf{ \tab Abstract}
+\end{large}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{V}
+\end{normalsize}
+}\\
+%==========================================================================
+\noindent
+{\begin{large}
+\textbf{ \tab List of Figures}
+\end{large}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{VI}
+\end{normalsize}
+}\\
+%==========================================================================
+%==========================================================================
+\noindent
+{\begin{large}
+\textbf{\tab 1. Introduction}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{1}
+\end{large}
+}
+
+% \noindent
+{\begin{large}
+\text{ \tab\tab 1.1  Objective }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{2}
+\end{large}
+}
+
+{\begin{large}
+\text{ \tab\tab 1.2  Problem Definition }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{2}
+\end{large}
+}
+
+{\begin{large}
+\text{ \tab\tab 1.3  Aim of the Project }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{2}
+\end{large}
+}
+
+\\
+\noindent
+{\begin{large}
+\textbf{\tab 2. Literature Survey}
+\end{large}
+}
+\hspace{10.4cm}
+{
+\begin{large}
+\textbf{3}
+\end{large}
+}\\
+{\begin{large}
+\text{ \tab\tab 2.1  Major Issues }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{4}
+\end{large}
+}
+\\
+\noindent
+{\begin{large}
+\textbf{ \tab 3.  System Analysis and Design}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{5}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\text{\tab\tab 3.1  Proposed System }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{5}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\text{\tab\tab 3.2  System Architecture}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{6}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\text{\tab\tab 3.3  Use Case Diagram}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{7}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab 4.Implementation }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{8}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\text{\tab\tab 4.1 Modules}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{8}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\text{\tab\tab 4.2 Proposed Algorithms}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{8}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\text{\tab\tab\tab 4.2.1 Raw Data}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{9}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\text{\tab\tab\tab 4.2.2 Data PreProcessing}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{9}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\text{\tab\tab\tab 4.2.3 Data Visualization}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{10}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\text{\tab\tab\tab 4.2.4 Testing Data}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{11}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\text{\tab\tab\tab 4.2.5 Predicting the Size using Algorithm}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{11}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\text{\tab\tab\tab 4.2.6 Random Forest Algorithm }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{12}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\text{\tab\tab 4.3 Results}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\text{14}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\textbf{ \tab 5.  Conclusion and Future Scope}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{15}
+\end{large}
+}\\
+\noindent
+{\begin{large}
+\textbf{ \tab References}
+\end{large}
+}
+\hspace{12.4cm}
+{
+\begin{large}
+\textbf{16}
+\end{large}
+}
+
+\end{titlepage}
+%==========================================================================
+\newpage
+
+\pagestyle{fancy}
+\rhead{\footnotesize MODCLOTH FIT PREDICTION USING MACHINE LEARNING  }
+\fancyfoot[L]{\footnotesize Department of Information Technology}
+\fancyfoot[R]{\footnotesize\thepage}
+\begin{center}
+\section{\Large INTRODUCTION}
+\end{center}
+\\
+\tab With the growth of the online fashion industry and the wide size variations across different
+clothing products, automatically providing accurate and personalized fit guidance is worthy of
+interest. As retailers often allow customers to provide fit feedback (e.g. “small”, “fit”, “large”)
+during the product return process or when leaving reviews, predictive models have been recently
+developed based on this kind of data [1, 8, 9]. A few recent approaches to this problem use two
+sets of latent variables to recover products and customers’ “true” sizes, and model the fit as a
+function of the difference between the two variables [8, 9].
+\\\\
+However, we notice that customers’ fit feedback reflects not only the objective match/mismatch
+between a product’s true size and a customer’s measurements, but also depends on other
+subjective characteristics of a product’s style and properties. We see two customers expressing
+concerns that a jacket seems ‘baggy,’ but both have different feedback regarding this fit
+shortcoming. Additionally, such fit feedback is ordinal in nature and is unevenly distributed
+(most transactions are reported as “fit”), which differs from general item recommendation tasks
+and requires domain-specific techniques.
+\\\\
+In this we pose product size recommendation problem as fit prediction problem and tackle the
+aforementioned challenges in the following ways: First, unlike previous work which focuses on
+recovering “true” sizes, we develop a new model to factorize the semantics of customers’ fit
+feedback, so that representations can capture customers’ fit preferences on various product
+aspects (like shoulders, waist etc.).
+\\\\\\\\\\\\
+We apply an ordinal regression procedure to learn these representations such that the order of
+labels is preserved. Second, using a heuristic we sample good representations from each class
+and project them to a metric space to address label imbalance issues. We
+collect customers’ fit feedback from two different clothing websites and contribute two public
+datasets. Through experiments on these datasets, we show the effectiveness of uncovering fine
+grained aspects of fit feedback and highlight the ability of metric learning approaches with
+prototyping in handling label imbalance issues.
+\\\\
+\begin{large}
+\textbf{1.1 OBJECTIVE }
+\end{large}
+\begin{normalsize}
+\\
+The objective of Mod cloth Fit Prediction Using Machine Learning is that the size and fit
+problem as a classification problem where given a product and a customer we want to predict if
+the product will ’fit’ to the customer using the Random Forest algorithm, which is an supervised
+learning algorithm.
+\end{normalsize}
+\\\\
+\begin{large}
+\textbf{1.2 PROBLEM DEFINITION}
+\end{large}
+\begin{normalsize}
+\\
+Given a customer C, a product P, and a set of reviews for the product R, we want to
+predict if the product will be small, fit or large for the customer. Both product and customer are
+defined by their respective features P = {pi} and C = {ci} where each feature can be either
+continuous or categorical. R = {ri} consists of the reviews left by customers on the product page.
+We define the output space as F = {(small, fit , large)}. \\\\
+\end{normalsize}
+\begin{large}
+\textbf{1.3 AIM OF THE PROJECT}
+\end{large}\\
+\begin{normalsize}
+The main aim of this project is to predict the size of a particular Mod Cloth product fit for the customer.The Fit prediction is critical in order to improve customers shopping experiences. This makes it easier for both the Producers and the consumers to reduce product return rates. The model helps the customers to know their required product size for a particular mod-cloth.
+
+
+\\\\
+\end{normalsize}
+ \newpage
+\begin{center}
+\section{ \Large LITERATURE SURVEY}
+\end{center}
+\begin{large}
+\textbf{2.1 RELATED WORK}
+\end{large}\\
+• According to Shreya Singh, G Mohammed Abdulla, Sumit Borar and Sagar Arora.
+ Mainly focuses on providing a production ready size
+recommendation system for
+shoes and address the
+challenge of providing
+recommendation for users. The product size recommendation problem is fairly recent with a only few studies proposed so
+far [1, 8, 9]. One approach recovers products and customers’ “true” sizes and uses these as
+features in a standard classifier for fit prediction [8]. In parallel to our work, another approach
+extends the above method and proposes Bayesian logit and probit regression models with ordinal
+categories to model fit [9]. Our approach differs from these studies in that we focus on capturing
+fit semantics and handle label imbalance issues using metric learning approaches with
+prototyping. Another recent approach uses skip-gram models to learn customers’ and products’
+latent features [1]. However, this approach assumes the availability of platform-specific features
+whereas our model works on more limited (and thus more readily available) transaction data.
+\\
+\\
+• According to R Misra, M Wan and J. McAuley
+ Proposed a new predictive
+framework to tackle the product
+fit problem, which captures the
+semantics behind customers' fit
+feedback, and employs a metric
+learning technique to resolve
+label imbalance issues.
+Metric learning has previously been applied to several recommendation problems. For music
+recommendation, one study encodes songs by their implicit feedback and employs metric
+learning to retrieve songs similar to a query song [6]. Another study uses users’ meta-data to
+build representations and employs metric learning to retrieve suitable partners for online dating
+recommendation [7]. In contrast, we learn representations of transactions that capture the ordinal
+nature of fit. Recently, collaborative filtering was combined with metric learning and its
+effectiveness was shown on various recommendation tasks [3]. However, the approach (that
+relies on binary implicit feedback data) does not translate directly to the ordinal nature of the
+product size recommendation problem.
+ \\\\\\
+• According to Romain Guigourès, Yuen King Ho, Evgenii Koriagin, Abdul-Saboor Sheikh, Urs Bergmann, and Reza Shirvany
+. Proposed a hierarchical Bayesian approach to tackle the challenging problem of size recommendation in e-commerce fashion. Our approach jointly models a size purchased by a customer, and its possible return event: 1. no return, 2. returned too small 3. returned too big.In this work, we focus on using customer reviews, purchases and
+returns data of the customers, product information in predicting
+the right fit for a customer. Customer reviews might contain crucial
+size and fit information which might help in predicting the right
+fit to a customer over using product and customer information
+alone. To extract the information from customer reviews we have
+embedded the reviews using a pre-trained language model [2]. 
+\\\\
+• According to G Mohammed Abdulla and Sumit Borar,
+ Proposed a size recommendation system to automatically pre-select consumer’s size based on past purchase and content data without explicitly asking for users measurements.
+ Many studies have used prototyping techniques with Nearest Neighbor based classification
+methods. Köstinger et al. [5] propose to jointly identify good prototypes and learn a distance
+metric, and also show that this leads to better generalization compared to k-Nearest Neighbor (k-
+NN) classification. Another study proposes a novel algorithm for deriving optimal prototypes,
+specifically for the 1-NN setting [11]. Following these lines, we develop a simple, fast and
+effective heuristic to choose relevant prototypes for Large Margin Nearest Neighbor (LMNN).\\\\
+\begin{large}
+\textbf{2.1 Major Issues}
+\end{large}\\
+• The challenge for the MoD Cloth dataset is that there are many null values.\\• Converting height from inches to centimeters (Object to float).
+
+\newpage
+
+\begin{center}
+\section{ \Large SYSTEM ANALYSIS AND DESIGN}
+\end{center}\\
+\begin{large}
+\textbf{3.1 PROPOSED SYSTEM}
+\end{large}\\\
+In the proposed system, the project will predict the size of a particular Mod Cloth product. It will
+take the input of different parameters like product id, height, waist, bust size, foot size etc.
+\\\\
+Based on the issues with forecasting mistakes and the danger of overfitting brought on by huge
+datasets. The results of the data analysis and submission to the company are inefficient and
+ineffectual. In order to solve the issue, we can predict the size of particular product using the
+applicable Random Forest technique.
+\\\\
+The Fit prediction is critical in order to improve customers shopping experiences. This makes it
+easier for both the Producers and the consumers to reduce product return rates. The model helps
+the customers to know their required product size / fit for a particular mod-cloth.\\
+\\
+\newpage
+\begin{large}
+\textbf{3.2 ARCHITECTURE DESIGN}
+\end{large}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=16cm,height=13cm]{m6.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{3.2.1}
+\caption{\footnotesize Architecture Design for size prediction model }
+\end{center}
+\end{figure}\\
+% The three main phases which we undergo for developing the application “Fruit Freshness Detection” is:\\
+% 1)Data Collection\\
+% 2)Deep Learning\\
+% 3)Prediction\\\\
+% In data collection, first we should collect the original fruit images and save them in one document as fresh fruits and rotten fruits. After that we should do data augmentation i.e; rescaling the images to avoid overfitting, rotating the images in different angles for comparison while predicting and zooming images. Then we perform normalization to normalize the dataset and split that dataset into test, train and validation.
+% In deep learning, we will create the VGG model and train it. After training the model validation should be done. Finally, we need to test the model.
+% In prediction, We can find the accuracy of model and plot the graph for accuracy and loss. Finally, prediction can be done by testing the model with new fruit images. Then the model will give result whether the fruit is fresh or rotten, if it is fresh how much percentage it is fresh and if it rotten how much percentage it is rotten.\\
+
+\\
+\\\\
+\newpage
+\begin{large}
+\textbf{3.3 USE CASE DIAGRAM: }\\
+\end{large}
+A use case diagram in the Unified Modeling Language (UM) is a type of behavioral diagram defined by and created from a Use-case analysis, Its purpose is to present a graphical overview of the functionality provided by a system in terms of actors, their goals (represented as use cases), and any dependencies between those use cases. The main purpose of a use case diagram is to show what system functions are performed for which actor. Roles of the actors in the system can be depicted.\\\\
+
+\begin{figure}[htbp]
+\centerline{\includegraphics{m4.png}}
+\renewcommand{\thefigure}{3.3}
+\caption{Use case diagram to predict size.}
+\label{fig}
+\end{figure}\\
+\\
+\\
+\\\\\\\\\\\\\\\\\\\\
+% \newpage
+% \textbf{3.4 project flow:}\\
+% \begin{figure}[htb]
+% \begin{center}
+% \includegraphics[width=14cm, height=10cm]{flow diagram.png}
+% \end{center}
+% \begin{center}
+% \renewcommand{\thefigure}{3.4.1}
+% \caption{\footnotesize Flow Diagram }
+% \end{center}
+% \end{figure}\\
+% First, we have to load both fresh and rotten fruit images in the dataset then we have to split the dataset to train, test and validation. After splitting the dataset, we need to perform augmentation which is rescaling the images to avoid overfitting. After augmentation we need to build the VGG model and train the model. Once the training and validation of model is finished, we need to evaluate the model and finally prediction should be done by testing the model with new fruit images. Then the developed model will give the result of that image as fresh or rotten.
+
+\newpage
+\begin{center}
+\section{ \Large IMPLEMENTATION}
+\end{center}
+\textbf{4.1 MODULES}
+\begin{enumerate}
+\item Data Collection \& Exploration
+\item Data Preprocessing
+\item Training the Model
+\item Evaluating the Model
+\item Results
+\end{enumerate}
+\\
+\begin{large}
+\textbf{4.2 PROPOSED ALGORITHM : }
+\end{large}
+
+\tab Based on the issues with overfitting risk brought on by huge datasets. The company's analysis of the data revealed that it was inefficient and unsuccessful. Thus, in order to solve the issue, we will predict the size of an MoD Cloth product for a particular customer using the Random Forest technique.
+The Fit prediction is critical in order to improve customers' shopping experiences. This makes it easier for both the Producers and the consumers to reduce product return rates. The model helps the customers to know their required product size/fit for a particular mod cloth. The system makes advantage of the hips, cup size, bust size, bust, height, fit, and shoe size. With the use of this dataset, an supervised learning model is built, and it is then used to predict the size by taking the different parameters as input. The project's suggested methodology is broken down into six steps:
+\begin{enumerate}
+\item  Raw Data
+\item  Data PreProcessing
+\item  Data visualization
+\item  Testing Data
+\item  Predicted the size/fit using the Algorithm
+\item  Algorithm
+\end{enumerate}
+\\
+\begin{large}
+\textbf{4.2.1 RAW DATA: }
+\end{large}
+\\
+\tab The term raw data refers to unprocessed data that is taken from a dataset or, in some cases, created as an output of data processing. Extraction, organizing, and occasionally analysis are the procedures needed for raw data. The data set consists of 82790 records. \\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=1\textwidth]{raw.jpg}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.1}
+\caption{\footnotesize Raw Data of MoDCloth Dataset}
+\end{center}
+\end{figure}\\
+\begin{large}
+\textbf{4.2.2 DATA PREPROCESSING: }
+\end{large}
+\\
+\\
+\tab MoD Cloth will collect a significant amount of data for testing and training purposes. The acquired dataset will be aggregated and categorized based on the review of the customers. These datasets will undergo data pre-processing when these criteria are taken into account. The project used data from the Kaggle named ModCloth dataset and imported using python libraries by selecting the required fields in the required format. Then converted some of the fields to the required format. Here height is converted from foot & inches to centimeters using regular expressions.
+\newpage
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=14cm,height=5cm]{data.jpg}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.2}
+\caption{\footnotesize Data Preprocessing of ModCloth Data}
+\end{center}
+\end{figure}
+\begin{large}
+\textbf{4.2.3 DATA VISUALIZATION: }
+\end{large}
+\\
+\tab Data visualization is the process of using graphs and performance metrics to assess a model's performance. The major use of data visualization is to reclassify the data into new categories so that the algorithm used can be expanded to include an observation of each output variable that results from an observed input variable. And data cleaning is performed based on the visualization.
+\begin{center}
+\includegraphics[width=8cm,height=6cm]{corr.png}
+\end{center}
+\begin{figure}[htb]
+\begin{center}
+\renewcommand{\thefigure}{4.2.3}
+\caption{\footnotesize Data Visualization of Mod-Cloth Dataset}
+\end{center}
+\end{figure}
+\begin{large}
+\\
+\textbf{4.2.4 TESTING DATA: }
+\end{large}
+\\
+\tab Testing the data is the next important step after visualising the data in an algorithm; the test set may be defined as a set of used to assess the performance of a model using performance metrics. The programme that uses the test set must be able to generalise and perform well with the data set in order to accurately provide the expected data and produce a programme that is useful in nature. Furthermore, overfitting, which is when the computer memorises the data set, occurs when this happens. To balance overfitting, regularisation is used to apply to the model and reduce it.
+\begin{center}
+\includegraphics{split.jpg}
+\end{center}
+\begin{figure}[htb]
+\begin{center}
+\renewcommand{\thefigure}{4.2.4}
+\caption{\footnotesize Splitting the Data into training \& testing data}
+\end{center}
+\end{figure}
+\begin{large}
+\textbf{4.2.5 PREDICTING THE SIZE/FIT USING ALGORITHM: }
+\end{large}
+\\
+\tab The proposed method predicts the size/fit of a particular MoD Cloth product by taking the parameters such as height, waist, bust, hip size, show size, etc. Random Forest is a popular machine learning algorithm that belongs to the supervised learning technique. Based on the concept of ensemble learning, which is a process of combining multiple classifiers to solve a complex problem and to improve the performance of the model.
+\begin{center}
+\includegraphics{model.jpg}
+\end{center}
+\begin{figure}[htb]
+\begin{center}
+\renewcommand{\thefigure}{4.2.5}
+\caption{\footnotesize  Accuracy of the Random Forest Model}
+\end{center}
+\end{figure}
+\begin{large}
+\textbf{4.2.6 RANDOM FOREST: }
+\end{large}
+\\
+\tab The algorithm used in this study is based on supervised learning. In contrast to unsupervised learning, there will be labeled data for this grouping. Based on the concept of ensemble learning, which is a process of combining multiple classifiers to solve a complex problem and to improve the performance of the model.
+\begin{center}
+\includegraphics[width=8cm,height=6.1cm]{randomForest.jpg}
+\end{center}
+\begin{figure}[htb]
+\begin{center}
+\renewcommand{\thefigure}{4.2.6.1}
+\caption{\footnotesize  Random Forest}
+\end{center}
+\end{figure}
+The algorithm is categorized into five steps:\\
+• Select random K data points from the training set.\\
+• Build the decision trees associated with the selected data points (Subsets).\\
+• Choose the number N for the decision trees that you want to build.\\
+• Repeat Steps 1 and 2.\\
+• For new data points, find the predictions of each decision tree, and assign the new data points to the category that wins the majority votes.\\
+\tab Random Forest is a classifier that contains a number of decision trees on various subsets of the given dataset and takes the average to improve the predictive accuracy of that dataset. Instead of relying on one decision tree, the random forest takes the prediction from each tree and based on the majority votes of predictions, and predicts the final output.\\
+\tab Since the random forest combines multiple trees to predict the class of the dataset, it is possible that some decision trees may predict the correct output, while others may not. But together, all the trees predict the correct output.
+% \begin{center}
+% \includegraphics{model.jpg}
+% \end{center}
+% \begin{figure}[htb]
+% \begin{center}
+% \renewcommand{\thefigure}{4.2.6.2}
+% \caption{\footnotesize Importing Random Forest and Calculating the accuracy}
+% \end{center}
+% \end{figure}
+\newpage
+\begin{large}
+\textbf{4.3 RESULTS: }
+\end{large}
+\\
+\tab The application makes a prediction of the size by taking the parameters such as height, waist, bust, hip size, show size, etc., using Random Forest to find the best size for the customer. The outcomes discussed are supported by the figures shown below.\\
+\tab Random Forest gives us the highest accuracy when compared to other algorithms. The model gives 98\% of training accuracy and 70\% testing accuracy. The model will predict the size by taking the parameters such as height, waist, bust, hip size, show size, etc.
+
+\begin{center}
+\includegraphics[width=0.9\textwidth]{result.jpg}
+\end{center}
+\begin{figure}[htb]
+\begin{center}
+\renewcommand{\thefigure}{4.3}
+\caption{\footnotesize  Predicting the Size with user inputs}
+\end{center}
+\end{figure}
+\newpage
+\begin{center}
+\section{ \Large  CONCLUSION AND FUTURE SCOPE}
+\end{center}
+\tab The project's conclusion is Size and Fit recommendation is an important problem in e-commerce because it helps customers in choosing the right fit and thereby reduces size and fit-related returns. Most of the earlier works embedded user and product information to predict the right fit. In this paper, we propose a machine learning-based approach to predict the fit based on customer reviews along with customer and product information. Through extensive experimentation on different datasets curated from data of one of the largest e-commerce platforms, we show the
+effectiveness of our approach.
+\\\\
+\tab We plan to extend this work by including other customer feedback like customer uploaded images and customer QnA to predict the right fit. Customers sometimes ask questions related to size and fit which get answered by other customers who have already bought the product. Also using customer-uploaded images along with product information might help the model to learn the interactions between the user and product to predict the right fit.
+
+\newpage
+{
+\begin{center}
+\begin{large}
+\textbf{\Large REFERENCES}
+\end{large}
+\end{center}
+}
+\vspace*{0.08in}
+\begin{normalsize}
+
+[1] V Sembium, R Rastogi, L Tekumalla et al., "Bayesian models for product size
+recommendations[C]", Proceedings of the 2020 World Wide Web Conference. International
+World Wide Web Conferences Steering Committee, pp. 679-687, 2020.\\
+
+[2] R Misra, M Wan and J. McAuley, "Decomposing fit semantics for product size
+recommendation in metric spaces[C]", Proceedings of the 12th ACM Conference on
+Recommender Systems, pp. 422-426, 2019.\\
+
+[3] Romain Guigourès, Yuen King Ho, Evgenii Koriagin, Abdul-Saboor Sheikh, Urs Bergmann,
+and Reza Shirvany. 2018. A hierarchical bayesian model for size recommendation in fashion. In
+Proceedings of the 12th ACM Conference on Recommender Systems. ACM, 392–396.\\
+
+[4] A. Chan, J. Fan, and W. Yu, “Prediction of men’s shirt pattern based on 3d body
+measurements,” International Journal of Clothing Science and Technology, vol. 17, no. 2, pp.
+100–108, 2018.\\
+
+[5] G Mohammed Abdulla and Sumit Borar. 2017. Size recommendation system for fashion e-
+commerce. In KDD Workshop on Machine Learning Meets Fashion.\\\\
+
+\end{normalsize}
+\end{document}
+
+
+
+On Sun, Jan 1, 2023 at 4:40 PM 19wh1a1286 Palem Girija <19wh1a1286@bvrithyderabad.edu.in> wrote:
+
+\documentclass[12pt, English]{article}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage[svgnames]{xcolor}
+\renewcommand{\baselinestretch}{1.5}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{sectsty}
+\usepackage{fancyhdr}
+\fancyfoot[C]{}
+\renewcommand{\headrulewidth}{4pt}
+\renewcommand{\footrulewidth}{4pt}
+\sectionfont{\fontsize{17.28}{17.28}\selectfont}
+\usepackage{mathptmx}
+\usepackage[font=small,labelfont=bf]{caption}
+\renewcommand{\figurename}{Figure}
+\usepackage[figurename=Figure]{caption}
+\usepackage{ragged2e}
+\usepackage{multirow}
+\addtolength{\topmargin}{-57pt}
+\addtolength{\oddsidemargin}{92pt}
+\addtolength{\footskip}{50pt}
+\justifying
+
+\usepackage{listings}
+\usepackage{afterpage}
+\pagestyle{plain}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+%\lstset{language=R,
+%    basicstyle=\small\ttfamily,
+%   stringstyle=\color{DarkGreen},
+%    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+%    morekeywords={TRUE,FALSE},
+%    deletekeywords={data,frame,length,as,character},
+%    keywordstyle=\color{blue},
+%    commentstyle=\color{DarkGreen},
+%}
+
+\lstset{frame=tb,
+language=R,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+numbers=none,
+keywordstyle=\color{blue},
+numberstyle=\tiny\color{gray},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=3
+}
+
+\usepackage{here}
+
+
+\textheight=21cm
+\textwidth=17cm
+%\topmargin=-1cm
+\oddsidemargin=0cm
+\parindent=0mm
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% La siguiente instrucciÃ³n pone el curso automÃ¡ticamente%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{color}
+\usepackage{ragged2e}
+
+\captionsetup[table]{name=Table}
+\global\let\date\relax
+\newcounter{unomenos}
+\setcounter{unomenos}{\number\year}
+\addtocounter{unomenos}{-1}
+\stepcounter{unomenos}
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+\vspace*{-1in}
+
+
+
+%==========================================================================
+%==========================================================================
+\begin{Large}
+\vspace*{0.1in}
+\textbf{A Mini Project Report\\on}
+\end{Large}
+\\
+\vspace*{0.1in}
+\textbf{\Large \textcolor{blue}{ MODCLOTH FIT PREDICTION USING
+MACHINE LEARNING}}
+
+%==========================================================================
+\begin{large}
+\textbf{{Submitted in fulfillment of the requirements \\
+for the award of degree of}}\\
+\end{large}
+%==========================================================================
+%==========================================================================
+\begin{large}
+{\textbf{BACHELOR OF TECHNOLOGY \\ in\\ Information Technology\\by}}\\
+\end{large}
+%===========================================================================
+
+\textit{\textbf{\large \textcolor{blue} {U . Shivani (19WH1A1279)}}} \\
+\textit{\textbf{\large \textcolor{blue} {T . Pooja (19WH1A1284)}}} \\
+\textit{\textbf{\large \textcolor{blue} {P . Girija(19WH1A1286)}}} \\
+\textit{\textbf{\large \textcolor{blue} {G . Vaishnavi (19WH1A12B9)}}} \\
+%==========================================================================
+\begin{large}
+\textit{\textbf{Under the esteemed guidance of}}\\
+\end{large}
+%==========================================================================
+\textit{\textbf{\large \textcolor{blue} {Ms. Dr. P S Latha Kalyampudi}}} \\
+\textit{\textbf{\large \textcolor{blue} {Associate Professor}}} \\
+%==========================================================================
+\begin{center}
+\includegraphics[width=2.0cm]{S2.png}
+\end{center}
+%==========================================================================
+
+\begin{large}
+\textit{\textbf{\large \textcolor{violet}{ Department of Information Technology }}} \\
+\end{large}
+%==========================================================================
+\begin{Large}
+\textit{\textbf{\large \textcolor{Orange}{ BVRIT HYDERABAD College of Engineering for Women }}} \\
+\end{Large}
+\begin{normalsize}
+\textbf{ Rajiv Gandhi Nagar, Nizampet Road, Bachupally, Hyderabad – 500090}
+
+%===========================================================================
+\textit{\textbf{\large \textcolor{DarkGreen}{ (Affiliated to Jawaharlal Nehru Technological University, Hyderabad) }}}
+\\
+
+\textbf{(NAAC ‘A’ Grade \& NBA Accredited- ECE, EEE, CSE & IT)}\\
+\end{normalsize}
+\begin{large}
+\vspace{0.05in}
+\textbf{ January, 2023}\\
+\end{large}
+\end{center}
+\end{titlepage}
+%===========================================================================
+
+\newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
+\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+%===========================DECLARATION=====================================
+\begin{titlepage}
+\begin{center}
+    \textbf{\LARGE DECLARATION}\\
+\end{center}
+\vspace*{0.2in}
+
+We hereby declare that the work presented in this project entitled {\textbf{\textcolor{blue}{“ MODCLOTH FIT PREDICTION USING
+MACHINE LEARNING”}}} submitted towards completion of Minor Project in IV year I sem of B.Tech IT at “BVRIT HYDERABAD College of Engineering for Women”, Hyderabad is an authentic record of our original work carried out under the esteem guidance of {\textbf {\textcolor{blue}{Ms Dr. P S Latha Kalyampudi , Associate Professor}}}, Department of Information Technology.
+
+
+\raggedleft
+\vspace*{0.5in}
+
+{\textbf {\textcolor{blue}{U. Shivani (19WH1A1279)}}}\\
+\raggedleft
+\vspace*{0.3in}
+{\textbf {\textcolor{blue}{T. Pooja (19WH1A1284)}}}\\
+\raggedleft
+\vspace*{0.3in}
+{\textbf {\textcolor{blue}{P. Girija (19WH1A1286)}}}\\
+\raggedleft
+\vspace*{0.3in}
+{\textbf {\textcolor{blue}{G. Vaishnavi (19WH1A12B9)}}}\\
+
+\end{titlepage}
+%===========================================================================
+%===========================CERTIFICATE=====================================
+\begin{titlepage}
+\vspace*{-0.5in}
+\begin{center}
+\includegraphics[width=2.8cm]{S2.png}
+\end{center}
+%===========================================================================
+\begin{center}
+\begin{large}
+\textbf{ \textcolor{orange}{BVRIT HYDERABAD\\College of Engineering for Women}}\\
+\end{large}
+\begin{footnotesize}
+\textbf{ Rajiv Gandhi Nagar, Nizampet Road, Bachupally, Hyderabad – 500090}\\
+\vspace*{0.1in}
+\textbf{\textcolor{DarkGreen}{(Affiliated to Jawaharlal Nehru Technological University, Hyderabad)}}\\
+\textbf{(NAAC ‘A’ Grade \& NBA Accredited- ECE, EEE, CSE & IT)}\\
+\end{footnotesize}
+\end{center}
+%===========================================================================
+\begin{center}
+    \textbf{\large CERTIFICATE}\\
+\end{center}
+
+\begin{normalsize}
+
+
+This is to certify that the minor-project report on {\textbf{\textcolor{blue}{“ MODCLOTH FIT PREDICTION USING
+MACHINE LEARNING”}}} is a bonafide work carried out by  {\textbf{U. Shivani (19WH1A1279),
+T. Pooja (19WH1A1284), P. Girija (19WH1A1286) }} and {\textbf{G. Vaishnavi (19WH1A12B9)}} in the fulfillment for the award of B.Tech degree in \textbf{Information Technology, BVRIT HYDERABAD College of Engineering for Women, Bachupally, Hyderabad} affiliated to Jawaharlal Nehru Technological University, Hyderabad under my guidance and supervision.
+\newline
+\tab The results embodied in the project work have not been submitted to any other university or institute for the award of any degree or diploma.
+\end{normalsize}
+
+\vspace*{0.5in}
+
+\noindent
+{\begin{normalsize}
+{\textbf{Internal Guide}}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{ Head of the Department}
+\end{normalsize}
+}\\
+%===========================================================================
+\noindent
+{\begin{normalsize}
+{\textbf{Ms Dr. P S Latha Kalyampudi }}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{Dr. Aruna Rao S L}
+\end{normalsize}
+}\\
+%===========================================================================
+\noindent
+{\begin{normalsize}
+{\textbf{ Associate Professor}}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{Professor \& HoD}
+\end{normalsize}
+}\\
+%===========================================================================
+\noindent
+{\begin{normalsize}
+{\textbf{Department of IT}}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{Department of IT}
+\end{normalsize}
+}\\
+\vspace*{0.4in}
+\begin{center}
+{\textbf{\large External Examiner}}
+\end{center}
+
+
+
+\end{titlepage}
+%===========================================================================
+%===========================ACKNOWLEDGEMENT=================================
+\begin{titlepage}
+\begin{center}
+    \textbf{\normalsize \underline{ACKNOWLEDGEMENT}}\\
+\end{center}
+\vspace*{0.2in}
+\begin{normalsize}
+We would like to express our profound gratitude and thanks to \textbf{Dr. K. V. N. Sunitha, Principal, BVRIT HYDERABAD} for providing the working facilities in the college.\\
+\newline
+Our sincere thanks and gratitude to \textbf{Dr. Aruna Rao S L, Professor \& Head, Department of IT, BVRIT HYDERABAD} for all the timely support, constant guidance and valuable suggestions during the period of our project.\\
+\newline
+We are extremely thankful and indebted to our internal guide, \textbf{Dr. P. S. Latha Kalyampudi, Associate Professor, Department of IT, BVRIT HYDERABAD} for her constant guidance, encouragement and moral support throughout the project.\\
+\newline
+Finally, we would also like to thank our Project Coordinators \textbf{Dr. P Kayal, Associate Professor, Dr. P. S. Latha Kalyampudi, Associate Professor}, all the faculty and staff of Department of IT who helped us directly or indirectly, parents and friends for their cooperation in completing the project work.
+\end{normalsize}
+
+\raggedleft
+\vspace*{0.5in}
+\begin{normalsize}
+{U . Shivani (19WH1A1279)}\\ \\
+\vspace*{0.25in}
+\raggedleft
+{T . Pooja (19WH1A1284)}\\ \\
+\vspace*{0.25in}
+\raggedleft
+{P . Girija (19WH1A1286)}\\\\
+\vspace*{0.25in}
+\raggedleft
+{G . Vaishnavi (19WH1A12B9)}\\ \\
+\raggedleft
+\end{normalsize}
+\end{titlepage}
+%===========================ABSTRACT========================================
+\begin{titlepage}
+
+\begin{center}
+    \textbf{\Large ABSTRACT}\\
+\end{center}
+
+\begin{normalsize}
+Fit prediction is critical in order to improve customers’ shopping experiences and to reduce
+product return rates. Modelling customers’ fit feedback is challenging due to its subtle
+semantics, arising from the subjective evaluation of products, and imbalanced label
+distribution. In this project, we propose a new predictive framework to tackle the product fit
+problem, which captures the semantics behind customers’ fit feedback, and employs a metric
+learning technique to resolve label imbalance issues. We also contribute two public datasets
+collected from online clothing retailers. The whole dataset is split into training and test sets.
+This dataset is useful in identifying key features that determine the fit of a clothing product on
+a customer. Then we apply algorithms to predict the output.
+
+\end{normalsize}\\\\\\\\\\\\\\\\
+\begin{normalsize}
+    \begin{center}
+    \vspace*{\fill}
+    \textbf{V}
+    \end{center}
+\end{normalsize}
+\end{normalsize}
+\end{titlepage}
+%=====================LIST-OF-FIGURES======================================
+\begin{titlepage}
+
+\begin{center}
+\vspace{-100cm}
+    \textbf{\large LIST OF FIGURES}
+\end{center}
+
+\begin{center}
+\begin{normalsize}
+     \begin{tabular}{|c|l|c|}
+     \hline
+     \normalsize\textbf{Figure No.} & \normalsize\textbf{Figure Name} & \normalsize\textbf{Page No.} \\
+     \hline
+     3.1.1 & Arduino & 5\\ \hline
+     3.2.1 & Ultrasonic Sensor & 6\\ \hline
+     3.3.1 & MEMS Sensor & 7\\ \hline
+     3.4.1 & GPS Module & 8\\ \hline
+     3.5 & LCD Display & 9\\ \hline
+     3.6 & Power Supply & 10\\ \hline
+     3.7 & IOT Module & 11\\ \hline
+     4.2.1 & System Architrcture & 14\\ \hline
+     4.3.1 & Use Case Diagram & 16\\ \hline
+     4.4.1 & Flow Diagram & 17\\ \hline
+     6.1 & Circuit & 19\\ \hline
+     6.2 & LCD Display of Output & 20\\ \hline
+     6.3 & Mobile Application Display of Output & 20\\ \hline
+     \end{tabular}
+    \begin{normalsize}
+    \begin{center}
+    \vspace*{\fill}
+    \textbf{VI}
+    \end{center}
+\end{normalsize}
+\end{normalsize}
+\end{titlepage}
+
+
+     
+
+
+%==========================================================================
+\newpage
+%=====================CONTENTS=============================================
+\begin{titlepage}
+
+\begin{center}
+    \textbf{\Large CONTENTS}\\
+\end{center}
+\vspace*{0.25in}
+
+%===========================================================================
+\noindent
+{\begin{normalsize}
+\textbf{\tab TOPIC}
+\end{normalsize}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{PAGE NO.}
+\end{normalsize}
+}\\
+%===========================================================================
+%==========================================================================
+\noindent
+{\begin{large}
+\textbf{ \tab Abstract}
+\end{large}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{V}
+\end{normalsize}
+}\\
+%==========================================================================
+\noindent
+{\begin{large}
+\textbf{ \tab List of Figures}
+\end{large}
+}
+\hfill
+{
+\begin{normalsize}
+\textbf{VI}
+\end{normalsize}
+}\\
+%==========================================================================
+%==========================================================================
+\noindent
+{\begin{large}
+\textbf{\tab 1. Introduction}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{1}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 1.1  Problem Definition }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+{\begin{large}
+\textbf{ \tab\tab 1.2  Aim of the Project }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\\
+\noindent
+{\begin{large}
+\textbf{\tab 2. Literature Survey}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{3}
+\end{large}
+}
+
+\\
+\noindent
+{\begin{large}
+\textbf{\tab 3. System Overview}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{5}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 3.1  Arduino }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 3.2  Ultrasonic Sensor }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 3.3  MEMS Sensor }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 3.4  GPS Module}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 3.5  LCD Display}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 3.6 Power Supply }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 3.7 IOT Module }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab 4.  System Analysis and Design}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{12}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 4.1  Proposed System }
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 4.2  System Architecture}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 4.3  Use Case Diagram}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{ \tab\tab 4.4  Flow Diagram}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+
+\noindent
+{\begin{large}
+\textbf{ \tab 5.  Modules}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{17}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab\tab 5.1 Module Names}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab\tab\tab 5.1.1 Movement Detection}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab\tab\tab 5.1.2 Calculating Steps}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab\tab\tab 5.1.3 Calculating Time}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab 6. Partial Implementation and Results}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{18}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab\tab 6.1 Circuit}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab\tab 6.2 LCD Display}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab\tab 6.3 Mobile Application}
+\end{large}
+}
+
+
+\noindent
+{\begin{large}
+\textbf{\tab\tab 6.4 Applications}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+\noindent
+{\begin{large}
+\textbf{\tab\tab 6.5 Advantages and Disadvantages}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{}
+\end{large}
+}
+
+
+\noindent
+{\begin{large}
+\textbf{ \tab 7.  Conclusion}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{21}
+\end{large}
+}
+
+
+\noindent
+{\begin{large}
+\textbf{ \tab References}
+\end{large}
+}
+\hfill
+{
+\begin{large}
+\textbf{22}
+\end{large}
+}
+
+\end{titlepage}
+%==========================================================================
+\newpage
+
+\pagestyle{fancy}
+\rhead{\footnotesize Freshness of Fruit Detection using VGG model  }
+\fancyfoot[L]{\footnotesize Department of Information Technology}
+\fancyfoot[R]{\footnotesize\thepage}
+\begin{center}
+\section{\Large Introduction}
+\end{center}
+\\
+\tab With the growth of the online fashion industry and the wide size variations across different
+clothing products, automatically providing accurate and personalized fit guidance is worthy of
+interest. As retailers often allow customers to provide fit feedback (e.g. “small”, “fit”, “large”)
+during the product return process or when leaving reviews, predictive models have been recently
+developed based on this kind of data [1, 8, 9]. A few recent approaches to this problem use two
+sets of latent variables to recover products and customers’ “true” sizes, and model the fit as a
+function of the difference between the two variables [8, 9].
+\\\\
+However, we notice that customers’ fit feedback reflects not only the objective match/mismatch
+between a product’s true size and a customer’s measurements, but also depends on other
+subjective characteristics of a product’s style and properties. We see two customers expressing
+concerns that a jacket seems ‘baggy,’ but both have different feedback regarding this fit
+shortcoming. Additionally, such fit feedback is ordinal in nature and is unevenly distributed
+(most transactions are reported as “fit”), which differs from general item recommendation tasks
+and requires domain-specific techniques.
+\\\\
+In this we pose product size recommendation problem as fit prediction problem and tackle the
+aforementioned challenges in the following ways: First, unlike previous work which focuses on
+recovering “true” sizes, we develop a new model to factorize the semantics of customers’ fit
+feedback, so that representations can capture customers’ fit preferences on various product
+aspects (like shoulders, waist etc.).
+\\\\\\\\\\\\
+We apply an ordinal regression procedure to learn these representations such that the order of
+labels is preserved. Second, using a heuristic we sample good representations from each class
+and project them to a metric space to address label imbalance issues. We
+collect customers’ fit feedback from two different clothing websites and contribute two public
+datasets. Through experiments on these datasets, we show the effectiveness of uncovering fine
+grained aspects of fit feedback and highlight the ability of metric learning approaches with
+prototyping in handling label imbalance issues.
+\\\\
+\begin{large}
+\textbf{1.1 Objective }
+\end{large}
+\begin{normalsize}
+\\
+The objective of Mod cloth Fit Prediction Using Machine Learning is that the size and fit
+problem as a classification problem where given a product and a customer we want to predict if
+the product will ’fit’ to the customer using the Random Forest algorithm, which is an supervised
+learning algorithm.
+\end{normalsize}
+\\\\
+\begin{large}
+\textbf{1.2 Problem Definition}
+\end{large}
+\begin{normalsize}
+\\
+Given a customer C, a product P, and a set of reviews for the product R, we want to
+predict if the product will be small, fit or large for the customer. Both product and customer are
+defined by their respective features P = {pi} and C = {ci} where each feature can be either
+continuous or categorical. R = {ri} consists of the reviews left by customers on the product page.
+We define the output space as F = {(small, fit , large)}. \\\\
+\end{normalsize}
+\begin{large}
+\textbf{1.3 Aim of the project}
+\end{large}\\
+\begin{normalsize}
+The main aim of this project is to predict the size of a particular Mod Cloth product fit for
+the customer.
+\\\\
+\end{normalsize}
+ \newpage
+\begin{center}
+\section{ \Large Literature Survey}
+\end{center}
+\begin{large}
+\textbf{2.1 Related Work}
+\end{large}\\
+• Saad Albawi, Tareq Abed Mohammed. The term Deep Learning or Deep Neural Nework refers to Artificial Neural Networks (ANN) with multi layers .Over the last few decades, it has been considered to be one of the most powerful tools, and has become very popular in the literature as it is able to handle a huge amount of data. The interest in having deeper hidden layers has recently begun to surpass classical methods performance in different fields; especially in pattern recognition. One of the most popular deep neural networks is the Convolutional Neural Network (CNN). It take this name from mathematical linear operation between matrixes called convolution. CNN have multiple layers; including convolutional layer, non-linearity layer, pooling layer and fully-connected layer.
+\\
+\\
+• Jin-Sung Kimast object detection is important to enable a vision-based automated vending machine. This paper proposes a new scheme to enhance the operation speed of YOLOv3 by removing the computation for the region of non-interest. In order to avoid the accuracy drop by a removal of computation, characteristics of a convolutiona layer and a YOLO layer are investigated, and a new processing method is proposed from experimental results. As a result, the operation speed is increased in proportion to the size of the region of non-interest. Experimental results show that the speed is improved by 3.29 times while the accuracy degradation is 2.81\% in MAP- 50. \\\\
+• According to Dingan Liao, Hu Lu,Xingpei Xu, Quansheng Gao. Image segmentation is an important technique in image analysis. Existing methods in image segmentation rely on an artificial neural network to extract the feature of the image. In this study, we propose an image segmentation method based on deep learning features and community detection. We propose the use of a pre-trained convolution neural network (CNN) to extract the deep learning features of the image.
+\\
+\\
+• According to Shuying Liu, Weihong Deng.Since Krizhevsky won the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) 2012 competition with the brilliant deep convolutional neural networks(D-CNNs), re-searchers have designed lots of D-CNNs. However, almost all the existing very deep convolutional neural networks are trained on the giant ImageNet datasets. Small datasets like CIFAR-10 has rarely taken advantage of the power of depth since deep models are easy to overfit. In this paper, we pro-posed a modified VGG-16 network and used this model to fit CIFAR-10. By adding stronger regularizer and using Batch Normalization, we achieved 8.45\% error rate on CIFAR-10 without severe overfitting. \\\\
+• According to Antonio Lazzaro , Marti Boada [7] A battery-less Near Field Communication(NFC) tag is used for grading the ripeness of fruit. The measurement of different samples obtained on different days is used to train the classification algorithms.
+\\
+\\
+• According to Amitangshu , Krishna kant.The integrated IoT-based online monitoring approach using smart logistics can address the critical needs of reduc-ing food waste.Further advances are needed to derive actionable intelligence from the col-lected data in real-world conditions.\\\\
+• According to Siyuan Lu, Zhihai Lu , Soriya Aok. It proposed to use CNN for fruit classification. Here three state of the art approaches are there: voting based support vector machine, wavelet entropy, genetic algorithm.
+\\\\
+
+• According to PL. Chithra, M. Henila [10] Here images having white background alone can only be considered for testing this algorithm. Using KNN classifier. Sample images should be acquired at 360degs in order to obtain 100\% accuracy.\\\\
+
+\newpage
+
+\begin{center}
+\section{ \Large System Analysis and Design}
+\end{center}\\
+\begin{large}
+\textbf{3.1 Proposed System}
+\end{large}\\\
+In the proposed system, the project will predict the size of a particular Mod Cloth product. It will
+take the input of different parameters like product id, height, waist, bust size, foot size etc.
+
+Based on the issues with forecasting mistakes and the danger of overfitting brought on by huge
+datasets. The results of the data analysis and submission to the company are inefficient and
+ineffectual. In order to solve the issue, we can predict the size of particular product using the
+applicable Random Forest technique.
+
+The Fit prediction is critical in order to improve customers shopping experiences. This makes it
+easier for both the Producers and the consumers to reduce product return rates. The model helps
+the customers to know their required product size / fit for a particular mod-cloth.\\
+\\
+\newpage
+\begin{large}
+\textbf{3.2 Architecture Design}
+\end{large}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm,height=12cm]{m3.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{3.2.1}
+\caption{\footnotesize Architecture Design }
+\end{center}
+\end{figure}\\
+% The three main phases which we undergo for developing the application “Fruit Freshness Detection” is:\\
+% 1)Data Collection\\
+% 2)Deep Learning\\
+% 3)Prediction\\\\
+% In data collection, first we should collect the original fruit images and save them in one document as fresh fruits and rotten fruits. After that we should do data augmentation i.e; rescaling the images to avoid overfitting, rotating the images in different angles for comparison while predicting and zooming images. Then we perform normalization to normalize the dataset and split that dataset into test, train and validation.
+% In deep learning, we will create the VGG model and train it. After training the model validation should be done. Finally, we need to test the model.
+% In prediction, We can find the accuracy of model and plot the graph for accuracy and loss. Finally, prediction can be done by testing the model with new fruit images. Then the model will give result whether the fruit is fresh or rotten, if it is fresh how much percentage it is fresh and if it rotten how much percentage it is rotten.\\
+
+\\
+\\\\
+\newpage
+\begin{large}
+\textbf{3.3 Use Case diagram: }\\
+\end{large}
+A use case diagram in the Unified Modeling Language (UM) is a type of behavioral diagram defined by and created from a Use-case analysis, Its purpose is to present a graphical overview of the functionality provided by a system in terms of actors, their goals (represented as use cases), and any dependencies between those use cases. The main purpose of a use case diagram is to show what system functions are performed for which actor. Roles of the actors in the system can be depicted.\\\\
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm,height=6cm]{m4.png}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{3.2.1}
+\caption{\footnotesize  UML Diagram}
+\end{center}
+\end{figure}\\
+\\
+\\
+\\\\\\\\\\\\\\\\\\\\
+% \newpage
+% \textbf{3.4 project flow:}\\
+% \begin{figure}[htb]
+% \begin{center}
+% \includegraphics[width=14cm, height=10cm]{flow diagram.png}
+% \end{center}
+% \begin{center}
+% \renewcommand{\thefigure}{3.4.1}
+% \caption{\footnotesize Flow Diagram }
+% \end{center}
+% \end{figure}\\
+% First, we have to load both fresh and rotten fruit images in the dataset then we have to split the dataset to train, test and validation. After splitting the dataset, we need to perform augmentation which is rescaling the images to avoid overfitting. After augmentation we need to build the VGG model and train the model. Once the training and validation of model is finished, we need to evaluate the model and finally prediction should be done by testing the model with new fruit images. Then the developed model will give the result of that image as fresh or rotten.
+
+\newpage
+\begin{center}
+\section{ \Large Implementation}
+\end{center}
+\textbf{4.1 Module Names}
+\begin{en}
+\item Data Collection & Exploration
+\item Data Preprocessing
+\item Training the Model
+\item Evaluating the Model
+\item Results
+\end{en}
+\\
+\begin{large}
+\textbf{4.2 Proposed Algorithm Names: }
+\end{large}
+
+Based on the issues with overfitting risk brought on by huge datasets. The company
+analysis of the data revealed that it was inefficient and unsuccessful. Thus, in order to solve the
+issue, we will predict the size of a MoD Cloth product for a particular customer using the
+Random Forest technique.
+The Fit prediction is critical in order to improve customers shopping experiences. This
+makes it easier for both the Producers and the consumers to reduce product return rates. The
+model helps the customers to know their required product size / fit for a particular mod-cloth.
+The system makes advantage of the hips, cup size, bust size, bust, height, fit, shoe size.
+With the use of this dataset, an supervised learning model is built, and it is then used to predict
+the size by taking the different parameters as input. The project's suggested methodology is
+broken down into six steps.
+\begin{enumerate}
+\item  Raw Data
+\item  Data Importing
+\item  Data visualization
+\item  Testing Data
+\item  Predicted the size/fit using Algorithm
+\item  Algorithm
+\end{enumerate}
+4.3 Results\\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=14cm, height=10cm]{result1.jpg}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.1}
+\caption{\footnotesize Fresh Fruit}
+\end{center}
+\end{figure}\\\\\\\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=14cm, height=12cm]{result2.jpg}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.2 }
+\caption{\footnotesize Rotten Fruit (99.3\%) }
+\end{center}
+\end{figure}\\\\\\\\\\\\\\\
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=14cm, height=12cm]{result3.jpg}
+\end{center}
+\begin{center}
+\renewcommand{\thefigure}{4.2.2 }
+\caption{\footnotesize Rotten Fruit (71.03\%)}
+\end{center}
+\end{figure}
+\\\\\\\\\
+\newpage
+\begin{center}
+\section{ \Large  Conclusion and Future Scope:}
+\end{center}
+The project's conclusion is Size and Fit recommendation is an important problem in e-commerce
+because it helps customers in choosing the right fit and thereby reduces size and fit related
+returns. Most of the earlier works embedded user and product information to predict the right fit.
+In this paper, we propose a machine learning based approach to predict the fit based on customer
+reviews along with customer and product information. Through extensive experimentation on
+different datasets curated from data of one of the largest e-commerce platforms, we show the
+effectiveness of our approach.
+\\\\
+We plan to extend this work by including other customer feedback like customer uploaded
+images and customer QnA to predict the right fit. Customers sometimes ask questions related to
+size and fit which get answered by other customers who have already bought the product. Also
+using customer uploaded images along with product information might help the model to learn
+the interactions between user and product to predict the right fit.
+
+\newpage
+{
+\begin{center}
+\begin{large}
+\textbf{\tab References}
+\end{large}
+\end{center}
+}
+\vspace*{0.08in}
+\begin{normalsize}
+
+[1] V Sembium, R Rastogi, L Tekumalla et al., "Bayesian models for product size
+recommendations[C]", Proceedings of the 2020 World Wide Web Conference. International
+World Wide Web Conferences Steering Committee, pp. 679-687, 2020.\\
+
+[2] R Misra, M Wan and J. McAuley, "Decomposing fit semantics for product size
+recommendation in metric spaces[C]", Proceedings of the 12th ACM Conference on
+Recommender Systems, pp. 422-426, 2019.\\
+
+[3] Romain Guigourès, Yuen King Ho, Evgenii Koriagin, Abdul-Saboor Sheikh, Urs Bergmann,
+and Reza Shirvany. 2018. A hierarchical bayesian model for size recommendation in fashion. In
+Proceedings of the 12th ACM Conference on Recommender Systems. ACM, 392–396.\\
+
+[4] A. Chan, J. Fan, and W. Yu, “Prediction of men’s shirt pattern based on 3d body
+measurements,” International Journal of Clothing Science and Technology, vol. 17, no. 2, pp.
+100–108, 2018.\\
+
+[5] G Mohammed Abdulla and Sumit Borar. 2017. Size recommendation system for fashion e-
+commerce. In KDD Workshop on Machine Learning Meets Fashion.\\\\
+
+
+
+
+
+\end{normalsize}
+\end{document}
